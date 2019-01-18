@@ -11,15 +11,15 @@ class App extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleChange(e) {
+    handleChange(e) { // update the state when the user types  in the input box
         this.setState({
             message: e.target.value,
         })
     }
-    handleSubmit(e) {
+    handleSubmit(e) { // control what happens when the form is submitted
         const { message } = this.state
-        e.preventDefault()
-        this.iframeWindow.current.contentWindow.postMessage(message, 'http://localhost:3010')
+        e.preventDefault() // stop the page refreshing on submit
+        this.iframeWindow.current.contentWindow.postMessage(message, 'http://localhost:3010') // send our postMessage to the other server
         this.setState({
             message: '',
         })
